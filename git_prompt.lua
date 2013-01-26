@@ -31,14 +31,7 @@ function file_exists(name)
 end
 
 function directory_exists(path)
-    local file = io.popen("cd " .. path .. " > nul 2>&1")
-    local rc = {file:close()}
-
-    if rc ~= 0 then
-        return false
-    else
-        return true
-    end
+    return clink.is_dir(path)
 end
 
 function file_contents(name)
