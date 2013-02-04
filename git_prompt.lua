@@ -157,8 +157,11 @@ function git_ps1()
 end
 
 function git_prompt_filter()
-    git_prompt = clink.prompt.value .. " (" .. git_ps1() .. ") "
-    clink.prompt.value = git_prompt
+    ps1 = git_ps1()
+    if ps1 ~= "" then
+        git_prompt = clink.prompt.value .. " (" .. ps1 .. ") "
+        clink.prompt.value = git_prompt
+    end
 
     return false
 end
